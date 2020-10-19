@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsStudents</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= yield :scripts %>
+</head>
+
+<body>
+<% if notice.present? %>
+  <div class="alert alert-info" role="alert"><%= notice %></div>
+<% end %>
+<% if alert.present? %>
+  <div class="alert alert-warning" role="alert"><%= alert %></div>
+<% end %>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col"><h2>Hello, <%= current_user.name %></h2>
+    </div>
+    <div class="col"> <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %></div>
+  </div>
+<% elsif !%w[sessions registrations].include?(controller_name) %>
+  <%= render '/users/shared/links' %>
+<% end %>
+<%= yield %>
+</body>
+</html>

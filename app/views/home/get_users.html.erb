@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <td>ФИО</td>
+    <td>Телефон</td>
+    <td>Адрес</td>
+    <td>Дата рождения</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.lastname %> <%= user.name %> <%= user.patronymic %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.address %></td>
+      <td><%= user.birth_date %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
